@@ -3,124 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💕 Valentine Week - For My Love</title>
+    <title>💕 Special For You - Valentine Week</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #1a0a0f 0%, #2d0a1a 50%, #1a0a0f 100%);
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff6b9d;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #ffb3c6;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .day-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px 15px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 107, 157, 0.2);
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 107, 157, 0.2);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        .day-emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .day-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #ffb3c6;
+        }
+
+        .day-date {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        .admin-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c9184a 100%);
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .admin-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 24, 74, 0.4);
+        }
+
+        .note {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: rgba(255, 179, 198, 0.6);
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            animation: floatUp 8s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 400px) {
+            h1 { font-size: 2.2rem; }
+            .days-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .day-card { padding: 15px 10px; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Floating Hearts Background -->
-    <div class="hearts-bg" id="heartsBg"></div>
-    
-    <!-- Main Container -->
+    <!-- Floating Hearts -->
+    <div id="hearts"></div>
+
     <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <h1 class="title">💕 Valentine Week 💕</h1>
-            <p class="subtitle">Celebrating Our Love, One Day at a Time</p>
-        </header>
+        <h1>💕 Valentine Week 💕</h1>
+        <p class="subtitle">8 Special Days, 8 Beautiful Moments</p>
 
-        <!-- Partner Name Section -->
-        <div class="partner-section" id="partnerSection">
-            <div class="partner-card">
-                <h2>Who's Your Valentine? 💝</h2>
-                <input type="text" id="partnerName" placeholder="Enter your loved one's name..." class="name-input">
-                <button class="save-btn" onclick="savePartnerName()">
-                    <span>Save & Continue</span>
-                    <span class="heart-icon">❤️</span>
-                </button>
-            </div>
+        <div class="days-grid">
+            <a href="pages/rose.html" class="day-card">
+                <span class="day-emoji">🌹</span>
+                <span class="day-name">Rose Day</span>
+                <span class="day-date">Feb 7</span>
+            </a>
+            <a href="pages/propose.html" class="day-card">
+                <span class="day-emoji">💍</span>
+                <span class="day-name">Propose Day</span>
+                <span class="day-date">Feb 8</span>
+            </a>
+            <a href="pages/chocolate.html" class="day-card">
+                <span class="day-emoji">🍫</span>
+                <span class="day-name">Chocolate Day</span>
+                <span class="day-date">Feb 9</span>
+            </a>
+            <a href="pages/teddy.html" class="day-card">
+                <span class="day-emoji">🧸</span>
+                <span class="day-name">Teddy Day</span>
+                <span class="day-date">Feb 10</span>
+            </a>
+            <a href="pages/promise.html" class="day-card">
+                <span class="day-emoji">🤞</span>
+                <span class="day-name">Promise Day</span>
+                <span class="day-date">Feb 11</span>
+            </a>
+            <a href="pages/hug.html" class="day-card">
+                <span class="day-emoji">🤗</span>
+                <span class="day-name">Hug Day</span>
+                <span class="day-date">Feb 12</span>
+            </a>
+            <a href="pages/kiss.html" class="day-card">
+                <span class="day-emoji">💋</span>
+                <span class="day-name">Kiss Day</span>
+                <span class="day-date">Feb 13</span>
+            </a>
+            <a href="pages/valentine.html" class="day-card">
+                <span class="day-emoji">❤️</span>
+                <span class="day-name">Valentine's Day</span>
+                <span class="day-date">Feb 14</span>
+            </a>
         </div>
 
-        <!-- Welcome Message -->
-        <div class="welcome-section hidden" id="welcomeSection">
-            <div class="welcome-card">
-                <p class="welcome-text">This is for you, <span id="displayName" class="partner-name-display"></span> 💖</p>
-                <button class="change-name-btn" onclick="changeName()">Change Name</button>
-            </div>
-        </div>
+        <a href="admin.html" class="admin-link">⚙️ Customize Messages</a>
 
-        <!-- Countdown Timer -->
-        <div class="countdown-section hidden" id="countdownSection">
-            <div class="countdown-card">
-                <h3 id="countdownTitle">🍫 Countdown to Chocolate Day</h3>
-                <div class="countdown-timer" id="countdownTimer">
-                    <div class="time-unit">
-                        <span class="time-value" id="days">00</span>
-                        <span class="time-label">Days</span>
-                    </div>
-                    <div class="time-separator">:</div>
-                    <div class="time-unit">
-                        <span class="time-value" id="hours">00</span>
-                        <span class="time-label">Hours</span>
-                    </div>
-                    <div class="time-separator">:</div>
-                    <div class="time-unit">
-                        <span class="time-value" id="minutes">00</span>
-                        <span class="time-label">Minutes</span>
-                    </div>
-                    <div class="time-separator">:</div>
-                    <div class="time-unit">
-                        <span class="time-value" id="seconds">00</span>
-                        <span class="time-label">Seconds</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Today's Special -->
-        <div class="todays-special hidden" id="todaysSpecial">
-            <div class="special-card">
-                <div class="special-badge">✨ Today's Special ✨</div>
-                <div class="special-emoji" id="todayEmoji">🌹</div>
-                <h2 class="special-title" id="todayTitle">Rose Day</h2>
-                <p class="special-message" id="todayMessage"></p>
-                <div class="special-quote" id="todayQuote"></div>
-            </div>
-        </div>
-
-        <!-- Valentine Week Calendar -->
-        <div class="calendar-section hidden" id="calendarSection">
-            <h2 class="calendar-title">💝 Valentine Week Calendar 💝</h2>
-            <div class="calendar-grid" id="calendarGrid">
-                <!-- Cards will be generated by JavaScript -->
-            </div>
-        </div>
-
-        <!-- Love Letter Section -->
-        <div class="letter-section hidden" id="letterSection">
-            <div class="letter-card">
-                <h3>💌 Write a Love Letter</h3>
-                <textarea id="loveLetter" placeholder="Write something special for your valentine..." class="letter-input"></textarea>
-                <button class="send-btn" onclick="saveLetter()">
-                    <span>Save Letter 💝</span>
-                </button>
-                <div class="saved-letter hidden" id="savedLetter">
-                    <p class="letter-content" id="letterContent"></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>Made with ❤️ for <span id="footerName">Your Valentine</span></p>
-            <p class="footer-note">Happy Valentine's Week! 💕</p>
-        </footer>
+        <p class="note">Click any day to view, or customize your messages first!</p>
     </div>
 
-    <!-- Popup Modal -->
-    <div class="popup-overlay hidden" id="popupOverlay">
-        <div class="popup-modal">
-            <div class="popup-close" onclick="closePopup()">×</div>
-            <div class="popup-emoji" id="popupEmoji">🌹</div>
-            <h2 class="popup-title" id="popupTitle">Happy Rose Day!</h2>
-            <p class="popup-message" id="popupMessage"></p>
-            <p class="popup-for">For you, <span id="popupName"></span> 💕</p>
-            <button class="popup-btn" onclick="closePopup()">Thank You! 💖</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+    <script>
+        // Create floating hearts
+        const container = document.getElementById('hearts');
+        const hearts = ['💕', '❤️', '💗', '💖', '🌹'];
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            container.appendChild(heart);
+        }
+    </script>
 </body>
 </html>
