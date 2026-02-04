@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>❤️ Valentine's Day - For You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-styles.css">
+    <style>
+        /* Valentine's Day Theme - Red + Gold + White */
+        :root {
+            --bg-gradient-start: #1a0505;
+            --bg-gradient-end: #2d0a0a;
+            --primary-color: #f44336;
+            --secondary-color: #ffcdd2;
+            --text-color: #ffffff;
+            --accent-color: #ffd700;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 50%, #200505 100%);
+            color: var(--text-color);
+        }
+
+        .day-title {
+            color: var(--accent-color);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.6), 0 0 60px rgba(244, 67, 54, 0.4);
+            font-size: 3.2rem;
+        }
+
+        .day-date {
+            color: var(--secondary-color);
+        }
+
+        .message-label {
+            color: var(--accent-color);
+        }
+
+        .message-section {
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+        }
+
+        .quote-section {
+            border-left-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .polaroid-caption {
+            color: #b71c1c;
+        }
+
+        .polaroid {
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.3),
+                0 0 0 1px rgba(255, 215, 0, 0.2),
+                0 0 50px rgba(255, 215, 0, 0.1);
+        }
+
+        /* Grand floating hearts animation */
+        .valentine-heart {
+            position: fixed;
+            font-size: 24px;
+            animation: valentineFloat 12s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        @keyframes valentineFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.3);
+                opacity: 0;
+            }
+            10% { opacity: 0.8; }
+            50% { transform: translateY(50vh) rotate(180deg) scale(1); }
+            90% { opacity: 0.8; }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .day-emoji {
+            animation: heartBeat 1s ease-in-out infinite;
+            font-size: 5rem;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        /* Golden shimmer overlay */
+        .page-container::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(244, 67, 54, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+            animation: shimmerGold 5s ease-in-out infinite;
+        }
+
+        @keyframes shimmerGold {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Special Valentine badge */
+        .valentine-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700 0%, #ffab00 100%);
+            color: #b71c1c;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            animation: badgePulse 2s ease-in-out infinite;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="hearts-container" id="valentineContainer"></div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Header -->
+        <div class="day-header">
+            <span class="day-emoji">❤️</span>
+            <div class="valentine-badge">✨ THE BIG DAY ✨</div>
+            <h1 class="day-title">Valentine's Day</h1>
+            <p class="day-date">February 14</p>
+        </div>
+
+        <!-- Polaroid Photo -->
+        <div class="polaroid-container">
+            <div class="polaroid">
+                <div id="photoContainer">
+                    <div class="polaroid-placeholder">❤️</div>
+                </div>
+                <p class="polaroid-caption" id="captionName">My Love</p>
+            </div>
+        </div>
+
+        <!-- Message -->
+        <div class="message-section">
+            <p class="message-label">For you, <span id="displayName">My Love</span> 💕</p>
+            <p class="message-text" id="messageText">
+                You are my today, my tomorrow, and my forever. Happy Valentine's Day, my love!
+            </p>
+        </div>
+
+        <!-- Quote -->
+        <div class="quote-section">
+            <p class="quote-text" id="quoteText">
+                "Love is composed of a single soul inhabiting two bodies." - Aristotle
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <p class="footer-hearts">❤️💛❤️</p>
+            <p>Happy Valentine's Day!</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.6;">Forever & Always 💕</p>
+        </div>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+        function createFloatingElements() {
+            const container = document.getElementById('valentineContainer');
+            const elements = ['❤️', '💕', '💖', '💗', '✨', '💛', '🌹', '💝'];
+            
+            for (let i = 0; i < 25; i++) {
+                const el = document.createElement('div');
+                el.className = 'valentine-heart';
+                el.textContent = elements[Math.floor(Math.random() * elements.length)];
+                el.style.left = Math.random() * 100 + '%';
+                el.style.animationDuration = (Math.random() * 6 + 8) + 's';
+                el.style.animationDelay = Math.random() * 12 + 's';
+                el.style.fontSize = (Math.random() * 15 + 18) + 'px';
+                container.appendChild(el);
+            }
+        }
+
+        function loadContent() {
+            const config = ValentineConfig.getDay('valentine');
+            
+            document.getElementById('displayName').textContent = config.name;
+            document.getElementById('captionName').textContent = config.name;
+            
+            if (config.message) {
+                document.getElementById('messageText').textContent = config.message;
+            }
+            
+            if (config.quote) {
+                document.getElementById('quoteText').textContent = config.quote;
+            }
+            
+            if (config.image) {
+                document.getElementById('photoContainer').innerHTML = 
+                    `<img src="${config.image}" alt="${config.name}" class="polaroid-image">`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingElements();
+            loadContent();
+        });
+    </script>
+</body>
+</html>

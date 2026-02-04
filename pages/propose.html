@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>💍 Propose Day - For You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-styles.css">
+    <style>
+        /* Propose Day Theme - Royal Purple + Gold */
+        :root {
+            --bg-gradient-start: #0d0a1a;
+            --bg-gradient-end: #1a0a2e;
+            --primary-color: #9c27b0;
+            --secondary-color: #e1bee7;
+            --text-color: #ffffff;
+            --accent-color: #ffd700;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 50%, #150520 100%);
+            color: var(--text-color);
+        }
+
+        .day-title {
+            color: var(--accent-color);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .day-date {
+            color: var(--secondary-color);
+        }
+
+        .message-label {
+            color: var(--accent-color);
+        }
+
+        .message-section {
+            border: 1px solid rgba(156, 39, 176, 0.3);
+            background: rgba(156, 39, 176, 0.1);
+        }
+
+        .quote-section {
+            border-left-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .polaroid-caption {
+            color: var(--bg-gradient-end);
+        }
+
+        /* Sparkle/Star animation for propose day */
+        .star {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+            pointer-events: none;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* Ring glow effect */
+        .day-emoji {
+            animation: ringGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes ringGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+            }
+            50% { 
+                filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars Animation -->
+    <div class="hearts-container" id="starsContainer"></div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Header -->
+        <div class="day-header">
+            <span class="day-emoji">💍</span>
+            <h1 class="day-title">Propose Day</h1>
+            <p class="day-date">February 8</p>
+        </div>
+
+        <!-- Polaroid Photo -->
+        <div class="polaroid-container">
+            <div class="polaroid">
+                <div id="photoContainer">
+                    <div class="polaroid-placeholder">💍</div>
+                </div>
+                <p class="polaroid-caption" id="captionName">My Love</p>
+            </div>
+        </div>
+
+        <!-- Message -->
+        <div class="message-section">
+            <p class="message-label">For you, <span id="displayName">My Love</span> 💕</p>
+            <p class="message-text" id="messageText">
+                Every moment with you feels like a beautiful dream I never want to wake up from. Will you be mine forever?
+            </p>
+        </div>
+
+        <!-- Quote -->
+        <div class="quote-section">
+            <p class="quote-text" id="quoteText">
+                "I love you not only for what you are, but for what I am when I am with you."
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <p class="footer-hearts">💍✨💍</p>
+            <p>Happy Propose Day!</p>
+        </div>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+        // Create twinkling stars
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(star);
+            }
+        }
+
+        // Load content from config
+        function loadContent() {
+            const config = ValentineConfig.getDay('propose');
+            
+            document.getElementById('displayName').textContent = config.name;
+            document.getElementById('captionName').textContent = config.name;
+            
+            if (config.message) {
+                document.getElementById('messageText').textContent = config.message;
+            }
+            
+            if (config.quote) {
+                document.getElementById('quoteText').textContent = config.quote;
+            }
+            
+            if (config.image) {
+                document.getElementById('photoContainer').innerHTML = 
+                    `<img src="${config.image}" alt="${config.name}" class="polaroid-image">`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            loadContent();
+        });
+    </script>
+</body>
+</html>

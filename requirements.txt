@@ -1,0 +1,4 @@
+# Valentine Week App - Python Dependencies
+# For desktop notifications
+
+plyer>=2.1.0

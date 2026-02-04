@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>💋 Kiss Day - For You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-styles.css">
+    <style>
+        /* Kiss Day Theme - Hot Pink + Red */
+        :root {
+            --bg-gradient-start: #1a0510;
+            --bg-gradient-end: #2d0a18;
+            --primary-color: #e91e63;
+            --secondary-color: #f8bbd9;
+            --text-color: #ffffff;
+            --accent-color: #ff4081;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 50%, #20050d 100%);
+            color: var(--text-color);
+        }
+
+        .day-title {
+            color: var(--accent-color);
+            text-shadow: 0 2px 20px rgba(255, 64, 129, 0.5);
+        }
+
+        .day-date {
+            color: var(--secondary-color);
+        }
+
+        .message-label {
+            color: var(--accent-color);
+        }
+
+        .message-section {
+            border: 1px solid rgba(233, 30, 99, 0.3);
+            background: rgba(233, 30, 99, 0.1);
+        }
+
+        .quote-section {
+            border-left-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .polaroid-caption {
+            color: #880e4f;
+        }
+
+        /* Floating kiss marks */
+        .kiss-mark {
+            position: fixed;
+            font-size: 18px;
+            animation: kissFloat 8s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        @keyframes kissFloat {
+            0% {
+                transform: translateY(100vh) rotate(-20deg) scale(0.5);
+                opacity: 0;
+            }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% {
+                transform: translateY(-100vh) rotate(20deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .day-emoji {
+            animation: kissAnimation 2s ease-in-out infinite;
+        }
+
+        @keyframes kissAnimation {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); filter: brightness(1.2); }
+        }
+
+        /* Lipstick shimmer effect */
+        .page-container::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(255, 64, 129, 0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(233, 30, 99, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="hearts-container" id="kissContainer"></div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Header -->
+        <div class="day-header">
+            <span class="day-emoji">💋</span>
+            <h1 class="day-title">Kiss Day</h1>
+            <p class="day-date">February 13</p>
+        </div>
+
+        <!-- Polaroid Photo -->
+        <div class="polaroid-container">
+            <div class="polaroid">
+                <div id="photoContainer">
+                    <div class="polaroid-placeholder">💋</div>
+                </div>
+                <p class="polaroid-caption" id="captionName">My Love</p>
+            </div>
+        </div>
+
+        <!-- Message -->
+        <div class="message-section">
+            <p class="message-label">For you, <span id="displayName">My Love</span> 💕</p>
+            <p class="message-text" id="messageText">
+                Your kisses are my favorite melody, and your love is my favorite song.
+            </p>
+        </div>
+
+        <!-- Quote -->
+        <div class="quote-section">
+            <p class="quote-text" id="quoteText">
+                "A kiss seals two souls for a moment in time."
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <p class="footer-hearts">💋💕💋</p>
+            <p>Happy Kiss Day!</p>
+        </div>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+        function createFloatingElements() {
+            const container = document.getElementById('kissContainer');
+            const elements = ['💋', '💕', '💗', '✨', '❤️', '😘'];
+            
+            for (let i = 0; i < 18; i++) {
+                const el = document.createElement('div');
+                el.className = 'kiss-mark';
+                el.textContent = elements[Math.floor(Math.random() * elements.length)];
+                el.style.left = Math.random() * 100 + '%';
+                el.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                el.style.animationDelay = Math.random() * 8 + 's';
+                el.style.fontSize = (Math.random() * 10 + 14) + 'px';
+                container.appendChild(el);
+            }
+        }
+
+        function loadContent() {
+            const config = ValentineConfig.getDay('kiss');
+            
+            document.getElementById('displayName').textContent = config.name;
+            document.getElementById('captionName').textContent = config.name;
+            
+            if (config.message) {
+                document.getElementById('messageText').textContent = config.message;
+            }
+            
+            if (config.quote) {
+                document.getElementById('quoteText').textContent = config.quote;
+            }
+            
+            if (config.image) {
+                document.getElementById('photoContainer').innerHTML = 
+                    `<img src="${config.image}" alt="${config.name}" class="polaroid-image">`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingElements();
+            loadContent();
+        });
+    </script>
+</body>
+</html>

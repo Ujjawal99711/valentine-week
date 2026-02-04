@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>🍫 Chocolate Day - For You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-styles.css">
+    <style>
+        /* Chocolate Day Theme - Brown + Cream */
+        :root {
+            --bg-gradient-start: #1a0f0a;
+            --bg-gradient-end: #2d1810;
+            --primary-color: #8d6e63;
+            --secondary-color: #d7ccc8;
+            --text-color: #ffffff;
+            --accent-color: #a1887f;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 50%, #1a0a05 100%);
+            color: var(--text-color);
+        }
+
+        .day-title {
+            color: #d7ccc8;
+            text-shadow: 0 2px 20px rgba(141, 110, 99, 0.5);
+        }
+
+        .day-date {
+            color: var(--secondary-color);
+        }
+
+        .message-label {
+            color: #bcaaa4;
+        }
+
+        .message-section {
+            border: 1px solid rgba(141, 110, 99, 0.3);
+            background: rgba(141, 110, 99, 0.1);
+        }
+
+        .quote-section {
+            border-left-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .polaroid-caption {
+            color: var(--bg-gradient-end);
+        }
+
+        /* Chocolate drops animation */
+        .choco-drop {
+            position: fixed;
+            width: 12px;
+            height: 16px;
+            background: linear-gradient(180deg, #5d4037 0%, #3e2723 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: dropFall 8s linear infinite;
+            pointer-events: none;
+            box-shadow: inset -2px -2px 4px rgba(0,0,0,0.3);
+        }
+
+        @keyframes dropFall {
+            0% {
+                transform: translateY(-10vh) scale(0.8);
+                opacity: 0;
+            }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% {
+                transform: translateY(110vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .day-emoji {
+            animation: melt 3s ease-in-out infinite;
+        }
+
+        @keyframes melt {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(5px) scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Chocolate Drops Animation -->
+    <div class="hearts-container" id="chocoContainer"></div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Header -->
+        <div class="day-header">
+            <span class="day-emoji">🍫</span>
+            <h1 class="day-title">Chocolate Day</h1>
+            <p class="day-date">February 9</p>
+        </div>
+
+        <!-- Polaroid Photo -->
+        <div class="polaroid-container">
+            <div class="polaroid">
+                <div id="photoContainer">
+                    <div class="polaroid-placeholder">🍫</div>
+                </div>
+                <p class="polaroid-caption" id="captionName">My Love</p>
+            </div>
+        </div>
+
+        <!-- Message -->
+        <div class="message-section">
+            <p class="message-label">For you, <span id="displayName">My Love</span> 💕</p>
+            <p class="message-text" id="messageText">
+                You are sweeter than the sweetest chocolate. My love for you is richer and deeper than any cocoa.
+            </p>
+        </div>
+
+        <!-- Quote -->
+        <div class="quote-section">
+            <p class="quote-text" id="quoteText">
+                "All you need is love. But a little chocolate now and then doesn't hurt."
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <p class="footer-hearts">🍫🤎🍫</p>
+            <p>Happy Chocolate Day!</p>
+        </div>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+        // Create chocolate drops
+        function createChocoDrops() {
+            const container = document.getElementById('chocoContainer');
+            for (let i = 0; i < 15; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'choco-drop';
+                drop.style.left = Math.random() * 100 + '%';
+                drop.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                drop.style.animationDelay = Math.random() * 8 + 's';
+                container.appendChild(drop);
+            }
+        }
+
+        function loadContent() {
+            const config = ValentineConfig.getDay('chocolate');
+            
+            document.getElementById('displayName').textContent = config.name;
+            document.getElementById('captionName').textContent = config.name;
+            
+            if (config.message) {
+                document.getElementById('messageText').textContent = config.message;
+            }
+            
+            if (config.quote) {
+                document.getElementById('quoteText').textContent = config.quote;
+            }
+            
+            if (config.image) {
+                document.getElementById('photoContainer').innerHTML = 
+                    `<img src="${config.image}" alt="${config.name}" class="polaroid-image">`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createChocoDrops();
+            loadContent();
+        });
+    </script>
+</body>
+</html>

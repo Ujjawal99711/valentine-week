@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>🤞 Promise Day - For You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-styles.css">
+    <style>
+        /* Promise Day Theme - Sky Blue + White */
+        :root {
+            --bg-gradient-start: #0a1520;
+            --bg-gradient-end: #0d2137;
+            --primary-color: #03a9f4;
+            --secondary-color: #b3e5fc;
+            --text-color: #ffffff;
+            --accent-color: #4fc3f7;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 50%, #051525 100%);
+            color: var(--text-color);
+        }
+
+        .day-title {
+            color: var(--accent-color);
+            text-shadow: 0 2px 20px rgba(3, 169, 244, 0.5);
+        }
+
+        .day-date {
+            color: var(--secondary-color);
+        }
+
+        .message-label {
+            color: var(--accent-color);
+        }
+
+        .message-section {
+            border: 1px solid rgba(3, 169, 244, 0.3);
+            background: rgba(3, 169, 244, 0.08);
+        }
+
+        .quote-section {
+            border-left-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .polaroid-caption {
+            color: #01579b;
+        }
+
+        /* Floating clouds/stars */
+        .cloud-star {
+            position: fixed;
+            font-size: 16px;
+            animation: floatCloud 15s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        @keyframes floatCloud {
+            0% {
+                transform: translateX(-100px) translateY(0);
+                opacity: 0;
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(-50px);
+                opacity: 0;
+            }
+        }
+
+        .day-emoji {
+            animation: pinkyPromise 2s ease-in-out infinite;
+        }
+
+        @keyframes pinkyPromise {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="hearts-container" id="cloudContainer"></div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Header -->
+        <div class="day-header">
+            <span class="day-emoji">🤞</span>
+            <h1 class="day-title">Promise Day</h1>
+            <p class="day-date">February 11</p>
+        </div>
+
+        <!-- Polaroid Photo -->
+        <div class="polaroid-container">
+            <div class="polaroid">
+                <div id="photoContainer">
+                    <div class="polaroid-placeholder">🤞</div>
+                </div>
+                <p class="polaroid-caption" id="captionName">My Love</p>
+            </div>
+        </div>
+
+        <!-- Message -->
+        <div class="message-section">
+            <p class="message-label">For you, <span id="displayName">My Love</span> 💕</p>
+            <p class="message-text" id="messageText">
+                I promise to love you unconditionally, to support you always, and to make you smile every single day.
+            </p>
+        </div>
+
+        <!-- Quote -->
+        <div class="quote-section">
+            <p class="quote-text" id="quoteText">
+                "A promise is a cloud; fulfillment is rain."
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <p class="footer-hearts">🤞💙🤞</p>
+            <p>Happy Promise Day!</p>
+        </div>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+        function createFloatingElements() {
+            const container = document.getElementById('cloudContainer');
+            const elements = ['☁️', '✨', '💫', '⭐', '💙'];
+            
+            for (let i = 0; i < 12; i++) {
+                const el = document.createElement('div');
+                el.className = 'cloud-star';
+                el.textContent = elements[Math.floor(Math.random() * elements.length)];
+                el.style.top = Math.random() * 80 + '%';
+                el.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                el.style.animationDelay = Math.random() * 15 + 's';
+                el.style.fontSize = (Math.random() * 10 + 14) + 'px';
+                container.appendChild(el);
+            }
+        }
+
+        function loadContent() {
+            const config = ValentineConfig.getDay('promise');
+            
+            document.getElementById('displayName').textContent = config.name;
+            document.getElementById('captionName').textContent = config.name;
+            
+            if (config.message) {
+                document.getElementById('messageText').textContent = config.message;
+            }
+            
+            if (config.quote) {
+                document.getElementById('quoteText').textContent = config.quote;
+            }
+            
+            if (config.image) {
+                document.getElementById('photoContainer').innerHTML = 
+                    `<img src="${config.image}" alt="${config.name}" class="polaroid-image">`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingElements();
+            loadContent();
+        });
+    </script>
+</body>
+</html>

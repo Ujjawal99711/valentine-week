@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>🧸 Teddy Day - For You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared-styles.css">
+    <style>
+        /* Teddy Day Theme - Warm Beige + Soft Pink */
+        :root {
+            --bg-gradient-start: #1a140f;
+            --bg-gradient-end: #2d2018;
+            --primary-color: #ffb74d;
+            --secondary-color: #ffe0b2;
+            --text-color: #ffffff;
+            --accent-color: #ffab91;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 50%, #1a1008 100%);
+            color: var(--text-color);
+        }
+
+        .day-title {
+            color: var(--primary-color);
+            text-shadow: 0 2px 20px rgba(255, 183, 77, 0.4);
+        }
+
+        .day-date {
+            color: var(--secondary-color);
+        }
+
+        .message-label {
+            color: var(--primary-color);
+        }
+
+        .message-section {
+            border: 1px solid rgba(255, 183, 77, 0.3);
+            background: rgba(255, 183, 77, 0.08);
+        }
+
+        .quote-section {
+            border-left-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        .polaroid-caption {
+            color: #5d4037;
+        }
+
+        /* Floating teddy bears / hearts */
+        .teddy-heart {
+            position: fixed;
+            font-size: 20px;
+            animation: floatTeddy 12s ease-in-out infinite;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        @keyframes floatTeddy {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .day-emoji {
+            animation: cuddle 2s ease-in-out infinite;
+        }
+
+        @keyframes cuddle {
+            0%, 100% { transform: scale(1) rotate(-5deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Elements -->
+    <div class="hearts-container" id="teddyContainer"></div>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Header -->
+        <div class="day-header">
+            <span class="day-emoji">🧸</span>
+            <h1 class="day-title">Teddy Day</h1>
+            <p class="day-date">February 10</p>
+        </div>
+
+        <!-- Polaroid Photo -->
+        <div class="polaroid-container">
+            <div class="polaroid">
+                <div id="photoContainer">
+                    <div class="polaroid-placeholder">🧸</div>
+                </div>
+                <p class="polaroid-caption" id="captionName">My Love</p>
+            </div>
+        </div>
+
+        <!-- Message -->
+        <div class="message-section">
+            <p class="message-label">For you, <span id="displayName">My Love</span> 💕</p>
+            <p class="message-text" id="messageText">
+                Just like a teddy bear, I want to be your comfort, your warmth, and your forever cuddle buddy.
+            </p>
+        </div>
+
+        <!-- Quote -->
+        <div class="quote-section">
+            <p class="quote-text" id="quoteText">
+                "A teddy bear is a friend you can hug anytime."
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="page-footer">
+            <p class="footer-hearts">🧸🤎🧸</p>
+            <p>Happy Teddy Day!</p>
+        </div>
+    </div>
+
+    <script src="../config.js"></script>
+    <script>
+        function createFloatingElements() {
+            const container = document.getElementById('teddyContainer');
+            const elements = ['🧸', '💛', '🤎', '✨', '💕'];
+            
+            for (let i = 0; i < 15; i++) {
+                const el = document.createElement('div');
+                el.className = 'teddy-heart';
+                el.textContent = elements[Math.floor(Math.random() * elements.length)];
+                el.style.left = Math.random() * 100 + '%';
+                el.style.animationDuration = (Math.random() * 6 + 10) + 's';
+                el.style.animationDelay = Math.random() * 12 + 's';
+                el.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                container.appendChild(el);
+            }
+        }
+
+        function loadContent() {
+            const config = ValentineConfig.getDay('teddy');
+            
+            document.getElementById('displayName').textContent = config.name;
+            document.getElementById('captionName').textContent = config.name;
+            
+            if (config.message) {
+                document.getElementById('messageText').textContent = config.message;
+            }
+            
+            if (config.quote) {
+                document.getElementById('quoteText').textContent = config.quote;
+            }
+            
+            if (config.image) {
+                document.getElementById('photoContainer').innerHTML = 
+                    `<img src="${config.image}" alt="${config.name}" class="polaroid-image">`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingElements();
+            loadContent();
+        });
+    </script>
+</body>
+</html>
