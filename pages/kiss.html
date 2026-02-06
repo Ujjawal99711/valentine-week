@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>ðŸ’‹ Kiss Day - For Laxmi</title>
+    <title>Kiss Day - For Laxmi</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-styles.css">
     <style>
@@ -18,13 +19,14 @@
         @keyframes kissFloat { 0% { transform: translateY(100vh) rotate(-20deg) scale(0.5); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(-100vh) rotate(20deg) scale(1.2); opacity: 0; } }
         .day-emoji { animation: kissAnimation 2s ease-in-out infinite; }
         @keyframes kissAnimation { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); filter: brightness(1.2); } }
+        .emoji { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
     </style>
 </head>
 <body>
     <div class="hearts-container" id="kissContainer"></div>
     <div class="page-container">
         <div class="day-header">
-            <span class="day-emoji">ðŸ’‹</span>
+            <span class="day-emoji emoji">&#x1F48B;</span>
             <h1 class="day-title">Kiss Day</h1>
             <p class="day-date">February 13</p>
         </div>
@@ -35,20 +37,20 @@
             </div>
         </div>
         <div class="message-section">
-            <p class="message-label">For you, Laxmi ðŸ’•</p>
-            <p class="message-text">Happy Kiss Day Laxmi, Ye lo Puchi ðŸ˜˜<br><br>Kuch feelings explain karne se better hote hain jab unhe quietly feel kiya jaye.</p>
+            <p class="message-label">For you, Laxmi <span class="emoji">&#x1F495;</span></p>
+            <p class="message-text">Happy Kiss Day Laxmi, Ye lo Puchi <span class="emoji">&#x1F618;</span><br><br>Kuch feelings explain karne se better hote hain jab unhe quietly feel kiya jaye.</p>
         </div>
         <div class="quote-section">
             <p class="quote-text">"A kiss seals two souls for a moment in time."</p>
         </div>
         <div class="page-footer">
-            <p class="footer-hearts">ðŸ’‹ðŸ’•ðŸ’‹</p>
+            <p class="footer-hearts emoji">&#x1F48B;&#x1F495;&#x1F48B;</p>
             <p>Happy Kiss Day!</p>
         </div>
     </div>
     <script>
         const container = document.getElementById('kissContainer');
-        const elements = ['ðŸ’‹', 'ðŸ’•', 'ðŸ’—', 'âœ¨', 'â¤ï¸', 'ðŸ˜˜'];
+        const elements = ['\u{1F48B}', '\u{1F495}', '\u{1F497}', '\u{2728}', '\u{2764}', '\u{1F618}'];
         for (let i = 0; i < 18; i++) {
             const el = document.createElement('div');
             el.className = 'kiss-mark';

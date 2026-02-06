@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>â¤ï¸ Valentine's Day - For Laxmi</title>
+    <title>Valentine's Day - For Laxmi</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-styles.css">
     <style>
@@ -21,14 +22,15 @@
         @keyframes heartBeat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.3); } 28% { transform: scale(1); } 42% { transform: scale(1.3); } 70% { transform: scale(1); } }
         .valentine-badge { display: inline-block; background: linear-gradient(135deg, #ffd700 0%, #ffab00 100%); color: #b71c1c; padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; margin-bottom: 15px; animation: badgePulse 2s ease-in-out infinite; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); }
         @keyframes badgePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .emoji { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
     </style>
 </head>
 <body>
     <div class="hearts-container" id="valentineContainer"></div>
     <div class="page-container">
         <div class="day-header">
-            <span class="day-emoji">â¤ï¸</span>
-            <div class="valentine-badge">âœ¨ THE BIG DAY âœ¨</div>
+            <span class="day-emoji emoji">&#x2764;&#xFE0F;</span>
+            <div class="valentine-badge">THE BIG DAY</div>
             <h1 class="day-title">Valentine's Day</h1>
             <p class="day-date">February 14</p>
         </div>
@@ -39,21 +41,21 @@
             </div>
         </div>
         <div class="message-section">
-            <p class="message-label">For you, Laxmi ðŸ’•</p>
-            <p class="message-text">Happy Valentine's Day Laxmi â¤ï¸<br><br>Jo bhi feel hota hai, woh steady aur peaceful hai.<br>Aur tum us feeling ka ek natural hissa ho.</p>
+            <p class="message-label">For you, Laxmi <span class="emoji">&#x1F495;</span></p>
+            <p class="message-text">Happy Valentine's Day Laxmi <span class="emoji">&#x2764;&#xFE0F;</span><br><br>Jo bhi feel hota hai, woh steady aur peaceful hai.<br>Aur tum us feeling ka ek natural hissa ho.</p>
         </div>
         <div class="quote-section">
             <p class="quote-text">"Love is composed of a single soul inhabiting two bodies." - Aristotle</p>
         </div>
         <div class="page-footer">
-            <p class="footer-hearts">â¤ï¸ðŸ’›â¤ï¸</p>
+            <p class="footer-hearts emoji">&#x2764;&#xFE0F;&#x1F49B;&#x2764;&#xFE0F;</p>
             <p>Happy Valentine's Day!</p>
-            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.6;">Forever & Always ðŸ’•</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.6;">Forever & Always</p>
         </div>
     </div>
     <script>
         const container = document.getElementById('valentineContainer');
-        const elements = ['â¤ï¸', 'ðŸ’•', 'ðŸ’–', 'ðŸ’—', 'âœ¨', 'ðŸ’›', 'ðŸŒ¹', 'ðŸ’'];
+        const elements = ['\u{2764}', '\u{1F495}', '\u{1F496}', '\u{1F497}', '\u{2728}', '\u{1F49B}', '\u{1F339}', '\u{1F49D}'];
         for (let i = 0; i < 25; i++) {
             const el = document.createElement('div');
             el.className = 'valentine-heart';

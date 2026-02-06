@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>ðŸ§¸ Teddy Day - For Laxmi</title>
+    <title>Teddy Day - For Laxmi</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-styles.css">
     <style>
@@ -18,13 +19,14 @@
         @keyframes floatTeddy { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.7; } 90% { opacity: 0.7; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
         .day-emoji { animation: cuddle 2s ease-in-out infinite; }
         @keyframes cuddle { 0%, 100% { transform: scale(1) rotate(-5deg); } 50% { transform: scale(1.1) rotate(5deg); } }
+        .emoji { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
     </style>
 </head>
 <body>
     <div class="hearts-container" id="teddyContainer"></div>
     <div class="page-container">
         <div class="day-header">
-            <span class="day-emoji">ðŸ§¸</span>
+            <span class="day-emoji emoji">&#x1F9F8;</span>
             <h1 class="day-title">Teddy Day</h1>
             <p class="day-date">February 10</p>
         </div>
@@ -35,24 +37,24 @@
             </div>
         </div>
         <div class="message-section">
-            <p class="message-label">For you, Laxmi ðŸ’•</p>
-            <p class="message-text">Happy Teddy Day to mahh Teddy ðŸ§¸<br><br>Comfort ek underrated cheez hai.<br>Tumhari presence mein woh comfort and sukoon feel hota hai, jo kafi rare h mere liye!</p>
+            <p class="message-label">For you, Laxmi <span class="emoji">&#x1F495;</span></p>
+            <p class="message-text">Happy Teddy Day to mahh Teddy <span class="emoji">&#x1F9F8;</span><br><br>Comfort ek underrated cheez hai.<br>Tumhari presence mein woh comfort and sukoon feel hota hai, jo kafi rare h mere liye!</p>
         </div>
         <div class="quote-section">
             <p class="quote-text">"A teddy bear is a friend you can hug anytime."</p>
         </div>
         <div class="page-footer">
-            <p class="footer-hearts">ðŸ§¸ðŸ¤ŽðŸ§¸</p>
+            <p class="footer-hearts emoji">&#x1F9F8;&#x1F90E;&#x1F9F8;</p>
             <p>Happy Teddy Day!</p>
         </div>
     </div>
     <script>
         const container = document.getElementById('teddyContainer');
-        const elements = ['ðŸ§¸', 'ðŸ’›', 'ðŸ¤Ž', 'âœ¨', 'ðŸ’•'];
+        const hearts = ['\u{1F9F8}', '\u{1F49B}', '\u{1F90E}', '\u{2728}', '\u{1F495}'];
         for (let i = 0; i < 15; i++) {
             const el = document.createElement('div');
             el.className = 'teddy-heart';
-            el.textContent = elements[Math.floor(Math.random() * elements.length)];
+            el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
             el.style.left = Math.random() * 100 + '%';
             el.style.animationDuration = (Math.random() * 6 + 10) + 's';
             el.style.animationDelay = Math.random() * 12 + 's';

@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>ðŸ¤ž Promise Day - For Laxmi</title>
+    <title>Promise Day - For Laxmi</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-styles.css">
     <style>
@@ -18,13 +19,14 @@
         @keyframes floatCloud { 0% { transform: translateX(-100px) translateY(0); opacity: 0; } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { transform: translateX(calc(100vw + 100px)) translateY(-50px); opacity: 0; } }
         .day-emoji { animation: pinkyPromise 2s ease-in-out infinite; }
         @keyframes pinkyPromise { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } }
+        .emoji { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
     </style>
 </head>
 <body>
     <div class="hearts-container" id="cloudContainer"></div>
     <div class="page-container">
         <div class="day-header">
-            <span class="day-emoji">ðŸ¤ž</span>
+            <span class="day-emoji emoji">&#x1F91E;</span>
             <h1 class="day-title">Promise Day</h1>
             <p class="day-date">February 11</p>
         </div>
@@ -35,20 +37,20 @@
             </div>
         </div>
         <div class="message-section">
-            <p class="message-label">For you, Laxmi ðŸ’•</p>
-            <p class="message-text">Happy Promise Day Baby [Laxmi] ðŸ¤<br><br>Mera simple sa promise h ki main hamesha love ke sath tujhe clarity dunga, hamesha respect karunga even if i'm angry aur patience rakhoonga tere sath and tere sath humesha khada rahunga.<br><br>No rush, no pressure only Love.</p>
+            <p class="message-label">For you, Laxmi <span class="emoji">&#x1F495;</span></p>
+            <p class="message-text">Happy Promise Day Baby [Laxmi] <span class="emoji">&#x1F90D;</span><br><br>Mera simple sa promise h ki main hamesha love ke sath tujhe clarity dunga, hamesha respect karunga even if i'm angry aur patience rakhoonga tere sath and tere sath humesha khada rahunga.<br><br>No rush, no pressure only Love.</p>
         </div>
         <div class="quote-section">
             <p class="quote-text">"A promise is a cloud; fulfillment is rain."</p>
         </div>
         <div class="page-footer">
-            <p class="footer-hearts">ðŸ¤žðŸ’™ðŸ¤ž</p>
+            <p class="footer-hearts emoji">&#x1F91E;&#x1F499;&#x1F91E;</p>
             <p>Happy Promise Day!</p>
         </div>
     </div>
     <script>
         const container = document.getElementById('cloudContainer');
-        const elements = ['â˜ï¸', 'âœ¨', 'ðŸ’«', 'â­', 'ðŸ’™'];
+        const elements = ['\u{2601}', '\u{2728}', '\u{1F4AB}', '\u{2B50}', '\u{1F499}'];
         for (let i = 0; i < 12; i++) {
             const el = document.createElement('div');
             el.className = 'cloud-star';

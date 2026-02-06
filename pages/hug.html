@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>ðŸ¤— Hug Day - For Laxmi</title>
+    <title>Hug Day - For Laxmi</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared-styles.css">
     <style>
@@ -18,13 +19,14 @@
         @keyframes hugFloat { 0% { transform: translateY(100vh) scale(0.5); opacity: 0; } 10% { opacity: 0.7; } 50% { transform: translateY(50vh) scale(1.2); } 90% { opacity: 0.7; } 100% { transform: translateY(-10vh) scale(0.8); opacity: 0; } }
         .day-emoji { animation: hugAnimation 1.5s ease-in-out infinite; }
         @keyframes hugAnimation { 0%, 100% { transform: scale(1); } 25% { transform: scale(1.15) rotate(-5deg); } 75% { transform: scale(1.15) rotate(5deg); } }
+        .emoji { font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; }
     </style>
 </head>
 <body>
     <div class="hearts-container" id="hugContainer"></div>
     <div class="page-container">
         <div class="day-header">
-            <span class="day-emoji">ðŸ¤—</span>
+            <span class="day-emoji emoji">&#x1F917;</span>
             <h1 class="day-title">Hug Day</h1>
             <p class="day-date">February 12</p>
         </div>
@@ -35,20 +37,20 @@
             </div>
         </div>
         <div class="message-section">
-            <p class="message-label">For you, Laxmi ðŸ’•</p>
-            <p class="message-text">Happy Hug Day Laxmi ðŸ¤—<br><br>Kabhi-kabhi ek calm hug bina bole hi kaafi hota hai.<br>Bas wahi vibe aaj ke liye!</p>
+            <p class="message-label">For you, Laxmi <span class="emoji">&#x1F495;</span></p>
+            <p class="message-text">Happy Hug Day Laxmi <span class="emoji">&#x1F917;</span><br><br>Kabhi-kabhi ek calm hug bina bole hi kaafi hota hai.<br>Bas wahi vibe aaj ke liye!</p>
         </div>
         <div class="quote-section">
             <p class="quote-text">"A hug is like a boomerang - you get it back right away."</p>
         </div>
         <div class="page-footer">
-            <p class="footer-hearts">ðŸ¤—ðŸ§¡ðŸ¤—</p>
+            <p class="footer-hearts emoji">&#x1F917;&#x1F9E1;&#x1F917;</p>
             <p>Happy Hug Day!</p>
         </div>
     </div>
     <script>
         const container = document.getElementById('hugContainer');
-        const elements = ['ðŸ¤—', 'ðŸ§¡', 'ðŸ’›', 'âœ¨', 'ðŸ’•', 'ðŸ«‚'];
+        const elements = ['\u{1F917}', '\u{1F9E1}', '\u{1F49B}', '\u{2728}', '\u{1F495}', '\u{1FAC2}'];
         for (let i = 0; i < 15; i++) {
             const el = document.createElement('div');
             el.className = 'warm-heart';
